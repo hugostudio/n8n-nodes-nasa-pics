@@ -1,0 +1,15 @@
+version: '3.6'
+
+services:
+  n8n-custom-node:
+    build:
+      context: ./docker/.
+      args:
+          N8N_VERSION: 0.205.0
+    ports:
+      - 5679:5678
+    networks:
+      - n8n-network
+networks:
+  n8n-network:
+    driver: bridge

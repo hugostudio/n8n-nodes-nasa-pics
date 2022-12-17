@@ -1,0 +1,7 @@
+ARG N8N_VERSION
+FROM n8nio/n8n:$N8N_VERSION
+
+RUN mkdir /n8n-custom-nodes
+COPY ../	/n8n-custom-nodes
+RUN cd /n8n-custom-node && npm install && npm run build && npm pack\
+  && cd /usr/local/lib/node_module/n8n && npm install /n8n-custom-node/n8n-nodes-nasapics-0.1.0.tgz
